@@ -17,7 +17,6 @@ export default function App() {
     <div className='container'>
       <Header/>
       <ActivityFeed />
-      <ActivityDetail />
       <Archive />
     </div> 
   );

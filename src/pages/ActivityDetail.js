@@ -1,8 +1,14 @@
 import React from 'react'
 
-export default function ActivityDetail() {
+export default function ActivityDetail(props) {
   
   return (
-    <div>ActivityDetail</div>
+    <div>Activity Detail
+      <h1>
+        time: {props.time}
+        direction: {props.direction}
+      </h1>
+
+    </div>
   )
 }
