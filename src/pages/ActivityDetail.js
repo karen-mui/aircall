@@ -5,8 +5,7 @@ export default function ActivityDetail(props) {
   return (
     <div>Activity Detail
       <h1>
-        time: {props.time}
-        direction: {props.direction}
+        id: {props.id}
       </h1>
 
     </div>
