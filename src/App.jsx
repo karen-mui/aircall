@@ -10,6 +10,9 @@ import ActivityFeed from './pages/ActivityFeed.js';
 import ActivityDetail from './pages/ActivityDetail.js';
 import Archive from './pages/Archive.js';
 
+// styles
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default function App() {
 
@@ -18,10 +21,9 @@ export default function App() {
   return (
     <div className='container'>
       <Header/>
-      <div className="container-view">Some activities should be here</div>
+      <ActivityFeed />
       <ActivityDetail />
       <Archive />
-      <ActivityFeed />
     </div> 
   );
 }
