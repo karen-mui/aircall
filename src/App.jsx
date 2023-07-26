@@ -5,10 +5,10 @@ import { useState } from 'react';
 // assets
 import Header from './Header.jsx';
 
-// components
-import ActivityFeed from './components/ActivityFeed.js';
-import ActivityDetail from './components/ActivityDetail.js';
-import Archive from './components/Archive.js';
+// pages
+import ActivityFeed from './pages/ActivityFeed.js';
+import ActivityDetail from './pages/ActivityDetail.js';
+import Archive from './pages/Archive.js';
 
 
 export default function App() {
