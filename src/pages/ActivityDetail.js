@@ -6,6 +6,7 @@ export default function ActivityDetail(props) {
     <div>Activity Detail
       <h1>
         id: {props.id}
+        time: {props.time}
       </h1>
 
     </div>

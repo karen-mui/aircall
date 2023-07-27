@@ -18,22 +18,28 @@ export default function ActivityFeed() {
       });
   }, []);
 
-  // handling the clicking of a specific call (showing details)
+  // handling the click of a specific call 
   const handleItemClick = (callId) => {
     setSelectedCallId(callId);
   };
 
+  // grabbing the specific data of clicked call to send into ActivityDetail
+  const getSelectedCallDetails = () => {
+    if (selectedCallId !== null) {
+      return callData.find(call => call.id === selectedCallId)
+    }
+    return null;
+  };
+
+  // populating all ActivityItems with data
   const ActivityItemArray = callData.map(call => {
     return (
       <ActivityItem
         key={call.id}
-        id={call.id}
         time={call.created_at}
         direction={call.direction}
         caller={call.from}
         callee={call.to}
-        aircallNum={call.via}
-        duration={call.duration}
         onClick={() => handleItemClick(call.id)}
       />
     );
@@ -42,22 +48,12 @@ export default function ActivityFeed() {
   return (
     <div>ActivityFeed
       {selectedCallId ? (
-        // yes selected callId -> display only that ActivityItems's detail
+        // yes selected callId -> display only one Activity's detail
         <ActivityDetail
-          key={selectedCallId}
-          id={selectedCallId}
-          // time={call.created_at}
-          // direction={call.direction}
-          // caller={call.from}
-          // callee={call.to}
-          // aircallNum={call.via}
-          // duration={call.duration}
-          // is_archived={call.is_archived}
-          // type={call.call_type} 
-          
+          {... getSelectedCallDetails()}     
         />
       ) : (
-        // no selected callId -> display list
+        // no selected callId -> display list of ActivityItems
         <ListGroup>
           {ActivityItemArray}
         </ListGroup>
