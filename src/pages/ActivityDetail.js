@@ -1,14 +1,17 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
 
 export default function ActivityDetail(props) {
   
   return (
     <div>Activity Detail
+      <Button onClick={props.onClick}>
+        Back to ActivityFeed
+        </Button>
       <h1>
         id: {props.id}
-        time: {props.time}
+        time: {props.created_at}
       </h1>
-
     </div>
   )
 }

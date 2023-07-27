@@ -31,15 +31,17 @@ export default function ActivityFeed() {
     return null;
   };
 
+  // 
+  const handleBackToFeed = () => {
+    setSelectedCallId(null)
+  }
+
   // populating all ActivityItems with data
   const ActivityItemArray = callData.map(call => {
     return (
       <ActivityItem
         key={call.id}
-        time={call.created_at}
-        direction={call.direction}
-        caller={call.from}
-        callee={call.to}
+        {...call}
         onClick={() => handleItemClick(call.id)}
       />
     );
@@ -50,7 +52,8 @@ export default function ActivityFeed() {
       {selectedCallId ? (
         // yes selected callId -> display only one Activity's detail
         <ActivityDetail
-          {... getSelectedCallDetails()}     
+          {... getSelectedCallDetails()}
+          onClick={handleBackToFeed}     
         />
       ) : (
         // no selected callId -> display list of ActivityItems
