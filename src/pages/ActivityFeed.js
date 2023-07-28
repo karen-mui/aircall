@@ -9,11 +9,12 @@ export default function ActivityFeed() {
   const [callData, setCallData] = useState([]);
   const [selectedCallId, setSelectedCallId] = useState(null);
 
-  // handling the api call...
+  // handling the api call... retrieving and setting only unarchived calls
   useEffect(() => {
     axios.get(`https://cerulean-marlin-wig.cyclic.app/activities`)
       .then(res => {
-        console.log(res.data);
+        const unarchivedCalls = res.data.filter(call => call.is_archived === false);
+        console.log(unarchivedCalls);
         setCallData([...res.data]);
       });
   }, []);
@@ -26,15 +27,15 @@ export default function ActivityFeed() {
   // grabbing the specific data of clicked call to send into ActivityDetail
   const getSelectedCallDetails = () => {
     if (selectedCallId !== null) {
-      return callData.find(call => call.id === selectedCallId)
+      return callData.find(call => call.id === selectedCallId);
     }
     return null;
   };
 
-  // 
+  // resetting the state to show all ActivityItems when back button is clicked
   const handleBackToFeed = () => {
-    setSelectedCallId(null)
-  }
+    setSelectedCallId(null);
+  };
 
   // populating all ActivityItems with data
   const ActivityItemArray = callData.map(call => {
@@ -48,18 +49,21 @@ export default function ActivityFeed() {
   });
 
   return (
-    <div>ActivityFeed
+    <div>
       {selectedCallId ? (
         // yes selected callId -> display only one Activity's detail
         <ActivityDetail
-          {... getSelectedCallDetails()}
-          onClick={handleBackToFeed}     
+          {...getSelectedCallDetails()}
+          onClick={handleBackToFeed}
         />
       ) : (
         // no selected callId -> display list of ActivityItems
-        <ListGroup>
-          {ActivityItemArray}
-        </ListGroup>
+        <div>
+          Activity Feed
+          <ListGroup>
+            {ActivityItemArray}
+          </ListGroup>
+        </div>
       )}
     </div>
   );
