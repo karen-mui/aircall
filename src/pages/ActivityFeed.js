@@ -14,8 +14,9 @@ export default function ActivityFeed() {
     axios.get(`https://cerulean-marlin-wig.cyclic.app/activities`)
       .then(res => {
         const unarchivedCalls = res.data.filter(call => call.is_archived === false);
-        console.log(unarchivedCalls);
-        setCallData([...res.data]);
+        // console.log(res.data)
+        // console.log(unarchivedCalls);
+        setCallData(unarchivedCalls);
       });
   }, []);
 
