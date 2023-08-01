@@ -6,7 +6,7 @@ export default function ActivityDetail(props) {
   return (
     <div>Activity Detail
       <Button onClick={props.onClick}>
-        Back to ActivityFeed
+        Back 
         </Button>
       <h1>
         id: {props.id}

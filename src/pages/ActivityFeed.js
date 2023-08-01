@@ -14,8 +14,8 @@ export default function ActivityFeed() {
     axios.get(`https://cerulean-marlin-wig.cyclic.app/activities`)
       .then(res => {
         const unarchivedCalls = res.data.filter(call => call.is_archived === false);
-        // console.log(res.data)
-        // console.log(unarchivedCalls);
+        console.log(res.data)
+        console.log(unarchivedCalls);
         setCallData(unarchivedCalls);
       });
   }, []);
@@ -39,7 +39,7 @@ export default function ActivityFeed() {
   };
 
   // populating all ActivityItems with data
-  const ActivityItemArray = callData.map(call => {
+  const unarchivedCallsArray = callData.map(call => {
     return (
       <ActivityItem
         key={call.id}
@@ -62,7 +62,7 @@ export default function ActivityFeed() {
         <div>
           Activity Feed
           <ListGroup>
-            {ActivityItemArray}
+            {unarchivedCallsArray}
           </ListGroup>
         </div>
       )}
